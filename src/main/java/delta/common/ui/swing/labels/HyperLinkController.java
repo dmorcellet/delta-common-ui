@@ -109,9 +109,9 @@ public class HyperLinkController
 
   private String colorToHex(Color color)
   {
-    int red=_color.getRed();
-    int green=_color.getGreen();
-    int blue=_color.getBlue();
+    int red=color.getRed();
+    int green=color.getGreen();
+    int blue=color.getBlue();
     return String.format("#%02x%02x%02x", Integer.valueOf(red), Integer.valueOf(green), Integer.valueOf(blue));  
   }
 
