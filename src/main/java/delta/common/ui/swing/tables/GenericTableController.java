@@ -419,6 +419,10 @@ public class GenericTableController<POJO>
    */
   public int getNbFilteredItems()
   {
+    if (_filter==null)
+    {
+      return getNbItems();
+    }
     int ret=_table.getRowSorter().getViewRowCount();
     return ret;
   }
