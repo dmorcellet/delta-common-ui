@@ -56,6 +56,15 @@ public class GenericTablePanelController<T> implements FilterUpdateListener
   }
 
   /**
+   * Get the counts display controller.
+   * @return the counts display controller.
+   */
+  public CountsDisplayController<T> getCountsDisplay()
+  {
+    return _countsController;
+  }
+
+  /**
    * Get the managed panel.
    * @return the managed panel.
    */
