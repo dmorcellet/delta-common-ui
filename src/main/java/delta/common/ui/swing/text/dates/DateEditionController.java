@@ -129,7 +129,6 @@ public class DateEditionController implements DropListener<List<File>>, TextList
     if (dateChanged)
     {
       _date=newDate;
-      //System.out.println("New date: "+_date+" = "+((_date!=null)?new Date(_date.longValue()):null));
       for(DateListener listener : _listeners)
       {
         listener.dateChanged(this,_date);
@@ -151,7 +150,7 @@ public class DateEditionController implements DropListener<List<File>>, TextList
 
   public void drop(List<File> data, DropTargetDropEvent sourceEvent)
   {
-    if ((data!=null) && (data.size()>0))
+    if ((data!=null) && (!data.isEmpty()))
     {
       File file=data.get(0);
       long date=file.lastModified();

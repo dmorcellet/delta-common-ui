@@ -38,17 +38,6 @@ public class DNDTools
       flavors.add(uriListFlavor);
       DNDManager<List<File>> dndManager=new DNDManager<List<File>>(flavors,filesExtractor,listener);
       DropTarget dropTarget=new DropTarget(c,dndManager);
-      /*
-      DropTarget dropTarget=c.getDropTarget();
-      if (dropTarget==null)
-      {
-        dropTarget=new DropTarget(c,dndManager);
-      }
-      else
-      {
-        dropTarget.addDropTargetListener(dndManager);
-      }
-      */
       c.setDropTarget(dropTarget);
     }
     catch (final Exception e)
