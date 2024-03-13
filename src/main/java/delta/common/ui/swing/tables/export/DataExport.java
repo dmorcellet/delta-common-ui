@@ -1,5 +1,6 @@
 package delta.common.ui.swing.tables.export;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.Icon;
@@ -33,17 +34,14 @@ public class DataExport<POJO>
    */
   public void export(GenericTableController<POJO> table)
   {
-    JTable jtable=table.getTable();
     int nbRows=table.getNbFilteredItems();
-    TableColumnsManager<POJO> columnsMgr=table.getColumnsManager();
-    List<TableColumnController<POJO,?>> columns=columnsMgr.getSelectedColumns();
-    int nbColumns=jtable.getColumnCount();
+    List<TableColumnController<POJO,?>> columns=getColumnsToUse(table);
+    int nbColumns=columns.size();
     // Headers
     String[] headers=new String[nbColumns];
     for(int j=0;j<nbColumns;j++)
     {
-      int columnIndex=jtable.convertColumnIndexToModel(j);
-      TableColumnController<POJO,?> column=columns.get(columnIndex);
+      TableColumnController<POJO,?> column=columns.get(j);
       headers[j]=column.getHeader();
     }
     _output.writeData(headers);
@@ -54,8 +52,7 @@ public class DataExport<POJO>
       POJO pojo=table.getAtViewIndex(i);
       for(int j=0;j<nbColumns;j++)
       {
-        int columnIndex=jtable.convertColumnIndexToModel(j);
-        TableColumnController<POJO,?> column=columns.get(columnIndex);
+        TableColumnController<POJO,?> column=columns.get(j);
         Object data=column.getValueProvider().getData(pojo);
         values[j]=toString(data);
       }
@@ -63,15 +60,40 @@ public class DataExport<POJO>
     }
   }
 
+  private List<TableColumnController<POJO,?>> getColumnsToUse(GenericTableController<POJO> table)
+  {
+    TableColumnsManager<POJO> columnsMgr=table.getColumnsManager();
+    List<TableColumnController<POJO,?>> columns=columnsMgr.getSelectedColumns();
+    JTable jtable=table.getTable();
+    int nbColumns=jtable.getColumnCount();
+    List<TableColumnController<POJO,?>> ret=new ArrayList<TableColumnController<POJO,?>>();
+    for(int j=0;j<nbColumns;j++)
+    {
+      int columnIndex=jtable.convertColumnIndexToModel(j);
+      TableColumnController<POJO,?> column=columns.get(columnIndex);
+      if (useColumn(column))
+      {
+        ret.add(column);
+      }
+    }
+    return ret;
+  }
+
+  private boolean useColumn(TableColumnController<POJO,?> column)
+  {
+    Class<?> dataType=column.getDataType();
+    if (dataType==Icon.class)
+    {
+      return false;
+    }
+    return true;
+  }
+
   private String toString(Object data)
   {
     if (data==null)
     {
       return "";
-    }
-    if (data instanceof Icon)
-    {
-      return "icon";
     }
     return data.toString();
   }

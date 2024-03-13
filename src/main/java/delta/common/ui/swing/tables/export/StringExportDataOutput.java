@@ -22,11 +22,21 @@ public class StringExportDataOutput implements ExportDataOutput
       }
       if (cell!=null)
       {
-        _sb.append(cell);
+        _sb.append(formatCell(cell));
       }
       index++;
     }
     _sb.append(EndOfLine.NATIVE_EOL);
+  }
+
+  private String formatCell(String cell)
+  {
+    if (cell.indexOf('\n')!=-1)
+    {
+      cell=cell.replace("\r\n","\\n");
+      cell=cell.replace("\n","\\n");
+    }
+    return cell;
   }
 
   /**
