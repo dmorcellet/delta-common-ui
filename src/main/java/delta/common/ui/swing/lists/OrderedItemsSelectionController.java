@@ -294,28 +294,28 @@ public class OrderedItemsSelectionController<T> implements ActionListener
     if (_add!=null)
     {
       List<T> sourceSelection=_sourceList.getSelectedItems();
-      _add.setEnabled(sourceSelection.size()>0);
+      _add.setEnabled(!sourceSelection.isEmpty());
     }
     if (_addAll!=null)
     {
       List<T> items=_sourceList.getItems();
-      _addAll.setEnabled(items.size()>0);
+      _addAll.setEnabled(!items.isEmpty());
     }
     if (_remove!=null)
     {
       List<T> selectedSelection=_selectedList.getSelectedItems();
-      _remove.setEnabled(selectedSelection.size()>0);
+      _remove.setEnabled(!selectedSelection.isEmpty());
     }
     if (_removeAll!=null)
     {
       List<T> selected=_selectedList.getItems();
-      _removeAll.setEnabled(selected.size()>0);
+      _removeAll.setEnabled(!selected.isEmpty());
     }
     if (_top!=null)
     {
       List<T> selectedSelection=_selectedList.getSelectedItems();
-      _top.setEnabled(selectedSelection.size()>0);
-      _bottom.setEnabled(selectedSelection.size()>0);
+      _top.setEnabled(!selectedSelection.isEmpty());
+      _bottom.setEnabled(!selectedSelection.isEmpty());
       _up.setEnabled(selectedSelection.size()==1);
       _down.setEnabled(selectedSelection.size()==1);
     }

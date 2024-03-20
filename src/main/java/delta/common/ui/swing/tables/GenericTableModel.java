@@ -9,8 +9,8 @@ import javax.swing.table.AbstractTableModel;
  */
 public class GenericTableModel<POJO> extends AbstractTableModel
 {
-  private GenericTableController<POJO> _table;
-  private DataProvider<POJO> _provider;
+  private transient GenericTableController<POJO> _table;
+  private transient DataProvider<POJO> _provider;
 
   /**
    * Constructor.

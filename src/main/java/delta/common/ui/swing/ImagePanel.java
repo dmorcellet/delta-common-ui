@@ -13,7 +13,7 @@ import javax.swing.JPanel;
  */
 public class ImagePanel extends JPanel
 {
-  private Image img;
+  private transient Image _image;
 
   /**
    * Constructor.
@@ -21,8 +21,8 @@ public class ImagePanel extends JPanel
    */
   public ImagePanel(Image image)
   {
-    this.img = image;
-    Dimension size = new Dimension(image.getWidth(null), image.getHeight(null));
+    _image=image;
+    Dimension size=new Dimension(image.getWidth(null),image.getHeight(null));
     setPreferredSize(size);
     setMinimumSize(size);
     setMaximumSize(size);
@@ -37,8 +37,8 @@ public class ImagePanel extends JPanel
     if (background!=null)
     {
       g.setColor(getBackground());
-      g.fillRect(0, 0, getWidth(),getHeight());
+      g.fillRect(0,0,getWidth(),getHeight());
     }
-    g.drawImage(img, 0, 0, null);
+    g.drawImage(_image,0,0,null);
   }
 }

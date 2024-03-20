@@ -14,7 +14,7 @@ public abstract class AbstractNavigablePanelController extends AbstractPanelCont
    * Constructor.
    * @param parent Parent area.
    */
-  public AbstractNavigablePanelController(NavigatorWindowController parent)
+  protected AbstractNavigablePanelController(NavigatorWindowController parent)
   {
     super(parent);
     _parent=parent;

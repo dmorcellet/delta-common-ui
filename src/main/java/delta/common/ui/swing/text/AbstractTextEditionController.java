@@ -15,7 +15,7 @@ public abstract class AbstractTextEditionController
    * Constructor.
    * @param textField Managed text field.
    */
-  public AbstractTextEditionController(JTextField textField)
+  protected AbstractTextEditionController(JTextField textField)
   {
     _textField=textField;
     TextListener listener=new TextListener()

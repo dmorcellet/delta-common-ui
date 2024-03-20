@@ -34,14 +34,14 @@ import delta.common.ui.swing.misc.Disposable;
 public class ButtonRenderer extends AbstractCellEditor implements TableCellRenderer, TableCellEditor, ActionListener, Disposable
 {
   private int _mnemonic;
-  private Border _originalBorder;
-  private Border _focusBorder;
+  private transient Border _originalBorder;
+  private transient Border _focusBorder;
   private int _editedRow;
 
-  private JButton _renderButton;
-  private JButton _editButton;
-  private Object _editorValue;
-  private ActionListener _actionListener;
+  private transient JButton _renderButton;
+  private transient JButton _editButton;
+  private transient Object _editorValue;
+  private transient ActionListener _actionListener;
 
   /**
    * Create the ButtonColumn to be used as a renderer and editor. The renderer

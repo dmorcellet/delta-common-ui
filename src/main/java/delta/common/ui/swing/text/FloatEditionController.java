@@ -81,10 +81,6 @@ public class FloatEditionController extends NumberEditionController<Float>
         LOGGER.warn("Parsing error!",e);
       }
     }
-    else
-    {
-      value=null;
-    }
     Float ret=null;
     if (value!=null)
     {
@@ -109,9 +105,7 @@ public class FloatEditionController extends NumberEditionController<Float>
     return ret;
   }
 
-  /**
-   * Release all managed resources.
-   */
+  @Override
   public void dispose()
   {
     super.dispose();

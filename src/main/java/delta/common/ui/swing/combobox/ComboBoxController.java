@@ -103,7 +103,7 @@ public class ComboBoxController<T>
       T selectedItem=getSelectedItem();
       for(ComboBoxItem<T> item : items)
       {
-        if (equal(item.getItem(),selectedItem))
+        if (equalityCheck(item.getItem(),selectedItem))
         {
           itemToSelect=item;
         }
@@ -202,7 +202,7 @@ public class ComboBoxController<T>
   {
     for(ComboBoxItem<T> item : _items)
     {
-      if (equal(item.getItem(),data))
+      if (equalityCheck(item.getItem(),data))
       {
         return item;
       }
@@ -210,7 +210,7 @@ public class ComboBoxController<T>
     return null;
   }
 
-  private boolean equal(T t1, T t2)
+  private boolean equalityCheck(T t1, T t2)
   {
     if (t1==null)
     {

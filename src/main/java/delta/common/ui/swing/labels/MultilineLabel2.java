@@ -19,8 +19,8 @@ import delta.common.ui.swing.GuiFactory;
  */
 public class MultilineLabel2 extends JPanel
 {
-  private LabelLineStyle _defaultStyle;
-  private Map<Integer,LabelLineStyle> _lineStyles;
+  private transient LabelLineStyle _defaultStyle;
+  private transient Map<Integer,LabelLineStyle> _lineStyles;
 
   /**
    * Constructor.

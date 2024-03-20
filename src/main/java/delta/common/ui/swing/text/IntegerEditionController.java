@@ -54,6 +54,7 @@ public class IntegerEditionController extends NumberEditionController<Integer>
    * Get the edited value.
    * @return A value or <code>null</code> if not valid.
    */
+  @Override
   public Integer getValue()
   {
     return _currentValue;
@@ -85,13 +86,5 @@ public class IntegerEditionController extends NumberEditionController<Integer>
       }
     }
     return ret;
-  }
-
-  /**
-   * Release all managed resources.
-   */
-  public void dispose()
-  {
-    super.dispose();
   }
 }

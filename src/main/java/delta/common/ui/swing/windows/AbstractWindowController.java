@@ -48,7 +48,7 @@ public abstract class AbstractWindowController extends AbstractAreaController im
    * Constructor.
    * @param parent Parent controller, if any.
    */
-  public AbstractWindowController(WindowController parent)
+  protected AbstractWindowController(WindowController parent)
   {
     super(parent);
     _parent=parent;
@@ -137,6 +137,7 @@ public abstract class AbstractWindowController extends AbstractAreaController im
    * Get the parent controller.
    * @return a controller or <code>null</code> if there's none.
    */
+  @Override
   public WindowController getParentController()
   {
     return _parent;
@@ -282,9 +283,7 @@ public abstract class AbstractWindowController extends AbstractAreaController im
     _context.setValue(propertyName,value);
   }
 
-  /**
-   * Release all managed resources.
-   */
+  @Override
   public void dispose()
   {
     super.dispose();

@@ -115,7 +115,6 @@ public class Sort
       boolean ascending=true;
       if (sortItem.startsWith(SORT_ASCENDING))
       {
-        ascending=true;
         sortItem=sortItem.substring(SORT_ASCENDING.length());
       }
       else if (sortItem.startsWith(SORT_DESCENDING))

@@ -1,7 +1,5 @@
 package delta.common.ui.swing.labels;
 
-import java.util.Arrays;
-
 /**
  * Split text into a given number of lines.
  * @author DAM
@@ -70,7 +68,6 @@ public class SplitIntoLines
     if (startIndex==_nbWordsPerLine.length-1)
     {
       _nbWordsPerLine[_nbWordsPerLine.length-1]=wordsLeft;
-      //System.out.println("Trying " + Arrays.toString(_nbWordsPerLine));
       String[] lines=splitTextInLines(_words,_nbWordsPerLine);
       useDecomposition(lines);
     }
@@ -122,27 +119,5 @@ public class SplitIntoLines
       ret+=Math.abs(widths[i]-mean);
     }
     return ret;
-  }
-
-  private static void test(String text, int linesCount)
-  {
-    System.out.println(text+" ("+linesCount+")");
-    String[] ret=split(text,linesCount);
-    System.out.println(" => "+Arrays.toString(ret));
-  }
-
-  /**
-   * Main method for tests.
-   * @param args Not used.
-   */
-  public static void main(String[] args)
-  {
-    test("Reforged Burglar's Sword of the Second Age",3);
-    test("",1);
-    test("",2);
-    test("Toto",2);
-    test("Toto titi",1);
-    test("Toto titi tata",2);
-    test("Toto titi tata",1);
   }
 }

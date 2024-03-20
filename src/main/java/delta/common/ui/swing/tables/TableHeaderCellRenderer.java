@@ -7,7 +7,7 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
-import sun.swing.table.DefaultTableCellHeaderRenderer;
+import sun.swing.table.DefaultTableCellHeaderRenderer; // NOSONAR
 
 /**
  * A table header cell renderer that uses a tooltip.

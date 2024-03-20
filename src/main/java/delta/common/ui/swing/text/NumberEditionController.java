@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 /**
  * Base class for number edition controllers.
@@ -23,13 +24,13 @@ public abstract class NumberEditionController<T extends Number> extends Abstract
    * @param textField Managed text field.
    * @param columns Width indication.
    */
-  public NumberEditionController(JTextField textField, int columns)
+  protected NumberEditionController(JTextField textField, int columns)
   {
     super(textField);
     _minValue=null;
     _maxValue=null;
     _textField.setColumns(columns);
-    _textField.setHorizontalAlignment(JTextField.TRAILING);
+    _textField.setHorizontalAlignment(SwingConstants.TRAILING);
     _listeners=new ArrayList<NumberListener<T>>();
   }
 
@@ -121,9 +122,7 @@ public abstract class NumberEditionController<T extends Number> extends Abstract
     }
   }
 
-  /**
-   * Release all managed resources.
-   */
+  @Override
   public void dispose()
   {
     super.dispose();

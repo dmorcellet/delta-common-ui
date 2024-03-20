@@ -46,10 +46,10 @@ import delta.common.utils.misc.Preferences;
  */
 public class GuiFactory
 {
-  private static Color BACKGROUND=Color.WHITE;
-  private static Color FOREGROUND=Color.BLACK;
+  private static final Color BACKGROUND=Color.WHITE;
+  private static final Color FOREGROUND=Color.BLACK;
 
-  private static boolean USE_BACKGROUND_PATTERN=true;
+  private static final boolean USE_BACKGROUND_PATTERN=true;
 
   private static Preferences _preferences;
 

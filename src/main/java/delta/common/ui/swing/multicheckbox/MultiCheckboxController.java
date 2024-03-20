@@ -150,7 +150,7 @@ public class MultiCheckboxController<T>
     int index=0;
     for(MultiCheckboxItem<T> item : _items)
     {
-      if (equal(item.getItem(),data))
+      if (equalityCheck(item.getItem(),data))
       {
         return index;
       }
@@ -159,7 +159,7 @@ public class MultiCheckboxController<T>
     return -1;
   }
 
-  private boolean equal(T t1, T t2)
+  private boolean equalityCheck(T t1, T t2)
   {
     if (t1==null)
     {

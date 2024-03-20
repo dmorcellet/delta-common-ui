@@ -74,19 +74,17 @@ public class WaitWindowController
 
   /**
    * Set the value of the progress bar.
-   * @param value Value to srt.
+   * @param value Value to set.
    */
   public void setValue(int value)
   {
     _progressBar.setValue(value);
-    //_progressBar.setString(nb+"/"+_pool.getNbJobs());
   }
 
   private void buildGUI()
   {
     _label=new JLabel();
     _progressBar=new JProgressBar(SwingConstants.HORIZONTAL,0,100);
-    //_progressBar.setStringPainted(true);
     JPanel panel=new JPanel(new GridBagLayout());
     Insets insets=new Insets(5,5,5,5);
     GridBagConstraints c=new GridBagConstraints(0,0,1,1,0.0,0.0,GridBagConstraints.WEST,GridBagConstraints.NONE,insets,0,0);

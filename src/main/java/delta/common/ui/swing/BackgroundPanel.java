@@ -12,7 +12,7 @@ import javax.swing.JPanel;
  */
 public class BackgroundPanel extends JPanel
 {
-  private Image _image;
+  private transient Image _image;
 
   /**
    * Constructor.
