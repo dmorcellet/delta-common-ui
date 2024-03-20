@@ -82,11 +82,7 @@ public class DataExport<POJO>
   private boolean useColumn(TableColumnController<POJO,?> column)
   {
     Class<?> dataType=column.getDataType();
-    if (dataType==Icon.class)
-    {
-      return false;
-    }
-    return true;
+    return (dataType!=Icon.class);
   }
 
   private String toString(Object data)

@@ -100,7 +100,7 @@ public class NavigationHistory
     int nbPagesToRemove=nbPages-index-1;
     for(int i=0;i<nbPagesToRemove;i++)
     {
-      _pages.remove(index+1);
+      _pages.remove(index+1); // NOSONAR
     }
     // Add given page and set it as current page
     _pages.add(pageIdentifier);

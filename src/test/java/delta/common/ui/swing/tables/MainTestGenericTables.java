@@ -65,7 +65,7 @@ public class MainTestGenericTables
     {
       public void actionPerformed(ActionEvent e)
       {
-        SimpleExportDataOutput output=new SimpleExportDataOutput();
+        SimpleExportDataOutput output=new SimpleExportDataOutput(System.out);
         DataExport<DataItem> exporter=new DataExport<DataItem>(output);
         exporter.export(_table);
       }

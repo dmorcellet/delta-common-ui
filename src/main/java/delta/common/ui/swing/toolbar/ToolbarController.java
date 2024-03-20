@@ -94,7 +94,7 @@ public class ToolbarController implements ActionListener
   {
     JButton button=GuiFactory.buildButton("");
     String itemId=item.getItemId();
-    if (item!=null)
+    if (itemId!=null)
     {
       button.setName(itemId);
     }
@@ -133,8 +133,6 @@ public class ToolbarController implements ActionListener
       button.setMargin(new Insets(1,1,1,1));
       button.setContentAreaFilled(false);
       button.setBorderPainted(false);
-      //button.setRequestFocusEnabled(false);
-      //button.setFocusPainted(false);
     }
     button.setEnabled(true);
     _items.put(itemId,button);
@@ -150,9 +148,7 @@ public class ToolbarController implements ActionListener
     Object source=e.getSource();
     if (source instanceof JButton)
     {
-      JButton button=(JButton)source;
-      String action=button.getActionCommand();
-      invokeAction(e,action);
+      invokeAction(e);
     }
   }
 
@@ -177,9 +173,8 @@ public class ToolbarController implements ActionListener
   /**
    * Invoke an action!
    * @param e Source event.
-   * @param actionId Identifier of action to invoke.
    */
-  private void invokeAction(ActionEvent e,String actionId)
+  private void invokeAction(ActionEvent e)
   {
     ActionListener[] als=_actionListeners.toArray(new ActionListener[_actionListeners.size()]);
     for(ActionListener al : als)

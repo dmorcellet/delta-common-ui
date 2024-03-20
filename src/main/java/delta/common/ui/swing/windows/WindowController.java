@@ -22,6 +22,7 @@ public interface WindowController extends AreaController
    * Get the parent window controller, if any.
    * @return A window controller or <code>null</code> if none or undefined.
    */
+  @Override
   public WindowController getParentController();
 
   /**

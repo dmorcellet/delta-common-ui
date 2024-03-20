@@ -279,7 +279,7 @@ public class GenericTableController<POJO>
   private void invokeDoubleClickAction(int row, MouseEvent sourceEvent)
   {
     POJO dataItem=_dataProvider.getAt(row);
-    if (_actionListeners.size()>0)
+    if (!_actionListeners.isEmpty())
     {
       ActionEvent e=new ActionEvent(dataItem,ActionEvent.ACTION_PERFORMED,DOUBLE_CLICK,sourceEvent.getModifiers());
       ActionListener[] als=_actionListeners.toArray(new ActionListener[_actionListeners.size()]);

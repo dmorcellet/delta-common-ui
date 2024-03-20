@@ -216,77 +216,117 @@ public class OrderedItemsSelectionController<T> implements ActionListener
     Object component=e.getSource();
     if (component==_add)
     {
-      List<T> selectedItems=_sourceList.getSelectedItems();
-      for(T selectedItem:selectedItems)
-      {
-        _selectedList.addItem(selectedItem);
-        _sourceList.removeItem(selectedItem);
-      }
+      handleAdd();
     }
     else if (component==_addAll)
     {
-      List<T> selectedItems=_sourceList.getItems();
-      for(T selectedItem:selectedItems)
-      {
-        _selectedList.addItem(selectedItem);
-      }
-      _sourceList.removeAll();
+      handleAddAll();
     }
     else if (component==_remove)
     {
-      List<T> selectedItems=_selectedList.getSelectedItems();
-      for(T selectedItem:selectedItems)
-      {
-        _sourceList.addItem(selectedItem);
-        _selectedList.removeItem(selectedItem);
-      }
+      handleRemove();
     }
     else if (component==_removeAll)
     {
-      List<T> selectedItems=_selectedList.getItems();
-      for(T selectedItem:selectedItems)
-      {
-        _sourceList.addItem(selectedItem);
-      }
-      _selectedList.removeAll();
+      handleRemoveAll();
     }
     else if (component==_top)
     {
-      List<T> selectedItems=_selectedList.getSelectedItems();
-      int nbItems=selectedItems.size();
-      for(int i=nbItems-1;i>=0;i--)
-      {
-        T selectedItem=selectedItems.get(i);
-        _selectedList.moveItemTop(selectedItem);
-      }
-      _selectedList.selectItems(selectedItems);
-      _selectedList.getList().requestFocus();
+      handleTop();
     }
     else if (component==_up)
     {
-      T selectedItem=_selectedList.getSelectedItems().get(0);
-      _selectedList.moveItemUp(selectedItem);
-      _selectedList.selectItem(selectedItem);
-      _selectedList.getList().requestFocus();
+      handleUp();
     }
     else if (component==_down)
     {
-      T selectedItem=_selectedList.getSelectedItems().get(0);
-      _selectedList.moveItemDown(selectedItem);
-      _selectedList.selectItem(selectedItem);
-      _selectedList.getList().requestFocus();
+      handleDown();
     }
     else if (component==_bottom)
     {
-      List<T> selectedItems=_selectedList.getSelectedItems();
-      for(T selectedItem : selectedItems)
-      {
-        _selectedList.moveItemBottom(selectedItem);
-      }
-      _selectedList.selectItems(selectedItems);
-      _selectedList.getList().requestFocus();
+      handleBottom();
     }
     updateButtonsStatus();
+  }
+
+  private void handleAdd()
+  {
+    List<T> selectedItems=_sourceList.getSelectedItems();
+    for(T selectedItem:selectedItems)
+    {
+      _selectedList.addItem(selectedItem);
+      _sourceList.removeItem(selectedItem);
+    }
+  }
+
+  private void handleAddAll()
+  {
+    List<T> selectedItems=_sourceList.getItems();
+    for(T selectedItem:selectedItems)
+    {
+      _selectedList.addItem(selectedItem);
+    }
+    _sourceList.removeAll();
+  }
+
+  private void handleRemove()
+  {
+    List<T> selectedItems=_selectedList.getSelectedItems();
+    for(T selectedItem:selectedItems)
+    {
+      _sourceList.addItem(selectedItem);
+      _selectedList.removeItem(selectedItem);
+    }
+  }
+
+  private void handleRemoveAll()
+  {
+    List<T> selectedItems=_selectedList.getItems();
+    for(T selectedItem:selectedItems)
+    {
+      _sourceList.addItem(selectedItem);
+    }
+    _selectedList.removeAll();
+  }
+
+  private void handleTop()
+  {
+    List<T> selectedItems=_selectedList.getSelectedItems();
+    int nbItems=selectedItems.size();
+    for(int i=nbItems-1;i>=0;i--)
+    {
+      T selectedItem=selectedItems.get(i);
+      _selectedList.moveItemTop(selectedItem);
+    }
+    _selectedList.selectItems(selectedItems);
+    _selectedList.getList().requestFocus();
+  }
+
+  private void handleUp()
+  {
+    T selectedItem=_selectedList.getSelectedItems().get(0);
+    _selectedList.moveItemUp(selectedItem);
+    _selectedList.selectItem(selectedItem);
+    _selectedList.getList().requestFocus();
+  }
+
+  private void handleDown()
+  {
+    T selectedItem=_selectedList.getSelectedItems().get(0);
+    _selectedList.moveItemDown(selectedItem);
+    _selectedList.selectItem(selectedItem);
+    _selectedList.getList().requestFocus();
+  }
+
+  private void handleBottom()
+  {
+    List<T> selectedItems=_selectedList.getSelectedItems();
+    for(T selectedItem : selectedItems)
+    {
+      _selectedList.moveItemBottom(selectedItem);
+    }
+    _selectedList.selectItems(selectedItems);
+    _selectedList.getList().requestFocus();
   }
 
   private void updateButtonsStatus()

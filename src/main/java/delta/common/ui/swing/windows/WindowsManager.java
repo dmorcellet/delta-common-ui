@@ -79,6 +79,7 @@ public class WindowsManager
       _id=id;
     }
 
+    @Override
     public void windowClosed(WindowEvent e)
     {
       Window w=e.getWindow();

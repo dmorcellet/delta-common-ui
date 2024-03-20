@@ -20,7 +20,7 @@ public class Arrows
    */
   public static void drawArrow(Graphics2D g, int fromX, int fromY, int toX, int toY)
   {
-    double angle = Math.atan2(toY-fromY, toX-fromX);
+    double angle = Math.atan2(toY-(double)fromY, toX-(double)fromX);
     drawArrow(g,toX,toY,angle);
   }
 

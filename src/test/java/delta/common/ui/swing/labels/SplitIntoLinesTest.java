@@ -2,6 +2,7 @@ package delta.common.ui.swing.labels;
 
 import java.util.Arrays;
 
+import junit.framework.Assert;
 import junit.framework.TestCase;
 
 /**
@@ -10,11 +11,16 @@ import junit.framework.TestCase;
  */
 public class SplitIntoLinesTest extends TestCase
 {
-  private void testASample(String text, int linesCount)
+  private void testASample(String text, int linesCount, String... expected)
   {
     System.out.println(text+" ("+linesCount+")");
     String[] ret=SplitIntoLines.split(text,linesCount);
     System.out.println(" => "+Arrays.toString(ret));
+    Assert.assertEquals(expected.length,ret.length);
+    for(int i=0;i<expected.length;i++)
+    {
+      Assert.assertEquals(expected[i],ret[i]);
+    }
   }
 
   /**
@@ -22,12 +28,12 @@ public class SplitIntoLinesTest extends TestCase
    */
   public void testSplit()
   {
-    testASample("Reforged Burglar's Sword of the Second Age",3);
-    testASample("",1);
-    testASample("",2);
-    testASample("Toto",2);
-    testASample("Toto titi",1);
-    testASample("Toto titi tata",2);
-    testASample("Toto titi tata",1);
+    testASample("Reforged Burglar's Sword of the Second Age",3,"Reforged Burglar's", "Sword of the", "Second Age");
+    testASample("",1,"");
+    testASample("",2,"");
+    testASample("Toto",2,"Toto");
+    testASample("Toto titi",1,"Toto titi");
+    testASample("Toto titi tata",2,"Toto", "titi tata");
+    testASample("Toto titi tata",1,"Toto titi tata");
   }
 }

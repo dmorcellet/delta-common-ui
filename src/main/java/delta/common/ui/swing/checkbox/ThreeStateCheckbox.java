@@ -51,9 +51,9 @@ public class ThreeStateCheckbox extends JCheckBox implements Icon, ItemListener
     if (_inListener) return;
     _inListener=true;
 
-    // Prog OR nonSelected+click => setSelected(true)=>"Selected",state=SELECTED;
-    // selected+click => setSelected(false)=>"Not selected", state=NOT_SELECTED;
-    // hal selected+click=>setSelected(true)=>"Selected"(with halfSelectged=true),state=SELECTED;
+    // not selected+click => "Selected",state=SELECTED
+    // selected+click => "Not selected", state=NOT_SELECTED
+    // half selected+click => "Selected"(with halfSelected=true),state=SELECTED
     int state=e.getStateChange();
     if (state==ItemEvent.SELECTED)
     {
@@ -131,14 +131,7 @@ public class ThreeStateCheckbox extends JCheckBox implements Icon, ItemListener
   public void setState(ThreeState state)
   {
     _inListener=true;
-    if (state==ThreeState.SELECTED)
-    {
-      setSelected(true);
-    }
-    else
-    {
-      setSelected(false);
-    }
+    setSelected(state==ThreeState.SELECTED);
     _state=state;
     _inListener=false;
     if (LOGGER.isDebugEnabled())

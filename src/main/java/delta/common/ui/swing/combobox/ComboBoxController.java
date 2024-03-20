@@ -123,7 +123,7 @@ public class ComboBoxController<T>
     else
     {
       _listenersEnabled=true;
-      if (items.size()>0)
+      if (!items.isEmpty())
       {
         _comboBox.setSelectedItem(items.get(0));
       }
