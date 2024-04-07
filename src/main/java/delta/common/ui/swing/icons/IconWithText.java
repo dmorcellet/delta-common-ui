@@ -40,8 +40,12 @@ public class IconWithText implements Icon
 
   private Icon _icon;
   private String _text;
+  private Font _font;
   private Color _color;
   private Position _position;
+  private boolean _useHalo;
+  private int _xMargin;
+  private int _yMargin;
 
   /**
    * Constructor.
@@ -53,8 +57,11 @@ public class IconWithText implements Icon
   {
     _icon=icon;
     _text=text;
+    _font=DEFAULT_FONT;
     _color=color;
     _position=Position.BOTTOM_RIGHT;
+    _useHalo=true;
+    _xMargin=2;
   }
 
   /**
@@ -66,6 +73,16 @@ public class IconWithText implements Icon
     _position=position;
   }
 
+  /**
+   * Set the "use halo" flag.
+   * @param useHalo Value to set.
+   */
+  public void setUseHalo(boolean useHalo)
+  {
+    _useHalo=useHalo;
+  }
+
+  @Override
   public void paintIcon(Component c, Graphics g, int x, int y)
   {
     if (_icon!=null)
@@ -75,17 +92,16 @@ public class IconWithText implements Icon
 
     if (_text.length()>0)
     {
-      Font font=DEFAULT_FONT;
-      g.setFont(font);
-      FontMetrics metrics=g.getFontMetrics(font);
+      g.setFont(_font);
+      FontMetrics metrics=g.getFontMetrics(_font);
       Rectangle2D r=metrics.getStringBounds(_text,g);
 
       int dx;
       int dy;
       if (_position==Position.BOTTOM_RIGHT)
       {
-        dx = (int)(getIconWidth() - r.getWidth()) - 2;
-        dy = getIconHeight() - metrics.getDescent();
+        dx = (int)(getIconWidth() - r.getWidth()) - _xMargin;
+        dy = getIconHeight() - metrics.getDescent() - _yMargin;
       }
       else
       {
@@ -95,7 +111,15 @@ public class IconWithText implements Icon
       dx+=x;
       dy+=y;
 
-      HaloPainter.drawStringWithHalo(g,dx,dy,_text,_color,Color.BLACK);
+      if (_useHalo)
+      {
+        HaloPainter.drawStringWithHalo(g,dx,dy,_text,_color,Color.BLACK);
+      }
+      else
+      {
+        g.setColor(_color);
+        g.drawString(_text,dx,dy);
+      }
     }
   }
 
@@ -105,10 +129,51 @@ public class IconWithText implements Icon
    */
   public void setText(String text)
   {
-    if (!_text.equals(text))
-    {
-      _text=text;
-    }
+    _text=text;
+  }
+
+  /**
+   * Set the font size.
+   * @param size Size to set.
+   */
+  public void setFontSize(int size)
+  {
+    _font=_font.deriveFont(size);
+  }
+
+  /**
+   * Set font in "bold".
+   */
+  public void setBold()
+  {
+    _font=_font.deriveFont(Font.BOLD);
+  }
+
+  /**
+   * Set font.
+   * @param font Font to set.
+   */
+  public void setFont(Font font)
+  {
+    _font=font;
+  }
+
+  /**
+   * Set the X margin.
+   * @param xMargin Value to set (pixels).
+   */
+  public void setXMargin(int xMargin)
+  {
+    _xMargin=xMargin;
+  }
+
+  /**
+   * Set the Y margin.
+   * @param yMargin Value to set (pixels).
+   */
+  public void setYMargin(int yMargin)
+  {
+    _yMargin=yMargin;
   }
 
   @Override
