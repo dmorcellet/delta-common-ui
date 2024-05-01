@@ -18,7 +18,6 @@ public class HyperLinkController
   private JLabel _label;
   private Color _color;
   private String _text;
-
   private HyperLinkAction _action;
 
   /**
@@ -113,6 +112,15 @@ public class HyperLinkController
     int green=color.getGreen();
     int blue=color.getBlue();
     return String.format("#%02x%02x%02x", Integer.valueOf(red), Integer.valueOf(green), Integer.valueOf(blue));  
+  }
+
+  /**
+   * Set the action.
+   * @param action Action to set.
+   */
+  public void setAction(HyperLinkAction action)
+  {
+    _action=action;
   }
 
   private void doIt()
