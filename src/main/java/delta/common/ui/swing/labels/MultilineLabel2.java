@@ -5,6 +5,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.swing.JFrame;
@@ -99,6 +100,15 @@ public class MultilineLabel2 extends JPanel
       ret=_defaultStyle;
     }
     return ret;
+  }
+
+  /**
+   * Set displayed text.
+   * @param text Multilines text.
+   */
+  public void setText(List<String> text)
+  {
+    setText(text.toArray(new String[text.size()]));
   }
 
   /**
