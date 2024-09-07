@@ -10,7 +10,8 @@ import java.awt.dnd.DropTargetListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import delta.common.utils.io.PrintStreamToStringBridge;
 
@@ -21,7 +22,7 @@ import delta.common.utils.io.PrintStreamToStringBridge;
  */
 class DNDManager<T> implements DropTargetListener
 {
-  private static final Logger LOGGER=Logger.getLogger(DNDManager.class);
+  private static final Logger LOGGER=LoggerFactory.getLogger(DNDManager.class);
 
   private final List<DataFlavor> _flavors;
   private final DataExtractor<T> _extractor;
@@ -52,7 +53,7 @@ class DNDManager<T> implements DropTargetListener
     {
       final PrintStreamToStringBridge bridge=new PrintStreamToStringBridge();
       DNDTools.dumpEvent(e,bridge.getPrintStream());
-      LOGGER.debug(bridge);
+      LOGGER.debug(bridge.toString());
     }
     if (shouldAcceptDrag(e))
     {
@@ -108,7 +109,7 @@ class DNDManager<T> implements DropTargetListener
     {
       final PrintStreamToStringBridge bridge=new PrintStreamToStringBridge();
       DNDTools.dumpEvent(e,bridge.getPrintStream());
-      LOGGER.debug(bridge);
+      LOGGER.debug(bridge.toString());
     }
     // Check to accept drop
     final DataFlavor flavor=chooseDropFlavor(e);

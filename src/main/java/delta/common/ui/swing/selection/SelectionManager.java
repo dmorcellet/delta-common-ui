@@ -7,7 +7,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import delta.common.ui.swing.misc.Disposable;
 import delta.common.utils.ListenersManager;
@@ -19,7 +20,7 @@ import delta.common.utils.ListenersManager;
  */
 public abstract class SelectionManager<POJO> implements ListSelectionListener,Disposable
 {
-  private static final Logger LOGGER=Logger.getLogger(SelectionManager.class);
+  private static final Logger LOGGER=LoggerFactory.getLogger(SelectionManager.class);
 
   // Listeners
   private ListenersManager<SelectionChangedListener<POJO>> _listeners;

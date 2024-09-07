@@ -6,7 +6,8 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Image-related utilities.
@@ -14,7 +15,7 @@ import org.apache.log4j.Logger;
  */
 public class ImageUtils
 {
-  private static final Logger _logger=Logger.getLogger(ImageUtils.class);
+  private static final Logger _logger=LoggerFactory.getLogger(ImageUtils.class);
 
   /**
    * Load an image from a file.

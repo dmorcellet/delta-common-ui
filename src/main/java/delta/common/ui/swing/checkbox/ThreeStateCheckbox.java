@@ -10,7 +10,8 @@ import javax.swing.Icon;
 import javax.swing.JCheckBox;
 import javax.swing.UIManager;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Three-state checkbox.
@@ -18,7 +19,7 @@ import org.apache.log4j.Logger;
  */
 public class ThreeStateCheckbox extends JCheckBox implements Icon, ItemListener
 {
-  private static final Logger LOGGER=Logger.getLogger(ThreeStateCheckbox.class);
+  private static final Logger LOGGER=LoggerFactory.getLogger(ThreeStateCheckbox.class);
 
   private static final Icon ICON=UIManager.getIcon("CheckBox.icon");
 

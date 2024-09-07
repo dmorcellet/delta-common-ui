@@ -9,7 +9,8 @@ import java.util.WeakHashMap;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Icons manager.
@@ -17,7 +18,7 @@ import org.apache.log4j.Logger;
  */
 public class IconsManager
 {
-  private static final Logger _logger=Logger.getLogger(IconsManager.class);
+  private static final Logger _logger=LoggerFactory.getLogger(IconsManager.class);
   private static final WeakHashMap<String,ImageIcon> _icons=new WeakHashMap<String,ImageIcon>();
 
   private static URL getImageURL(String iconPath)

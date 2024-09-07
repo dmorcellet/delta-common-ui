@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Extracts a list of files from a DND event.
@@ -18,7 +19,7 @@ import org.apache.log4j.Logger;
  */
 public class FilesListExtractor implements DataExtractor<List<File>>
 {
-  private static final Logger LOGGER=Logger.getLogger(FilesListExtractor.class);
+  private static final Logger LOGGER=LoggerFactory.getLogger(FilesListExtractor.class);
 
   public List<File> extractData(final DropTargetDropEvent e, final DataFlavor flavor)
   {

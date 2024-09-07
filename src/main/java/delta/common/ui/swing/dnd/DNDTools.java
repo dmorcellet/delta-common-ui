@@ -12,7 +12,8 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Tools related to Drag&drop.
@@ -20,7 +21,7 @@ import org.apache.log4j.Logger;
  */
 public class DNDTools
 {
-  private static final Logger LOGGER=Logger.getLogger(DNDTools.class);
+  private static final Logger LOGGER=LoggerFactory.getLogger(DNDTools.class);
 
   /**
    * Install a files drop listener on a graphical component.

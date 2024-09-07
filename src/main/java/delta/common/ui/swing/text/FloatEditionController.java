@@ -5,7 +5,8 @@ import java.text.NumberFormat;
 
 import javax.swing.JTextField;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Float edition controller using a text field.
@@ -13,7 +14,7 @@ import org.apache.log4j.Logger;
  */
 public class FloatEditionController extends NumberEditionController<Float>
 {
-  private static final Logger LOGGER=Logger.getLogger(FloatEditionController.class);
+  private static final Logger LOGGER=LoggerFactory.getLogger(FloatEditionController.class);
 
   private NumberFormat _format;
 
