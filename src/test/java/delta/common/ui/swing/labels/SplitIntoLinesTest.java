@@ -1,32 +1,34 @@
 package delta.common.ui.swing.labels;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.Arrays;
 
-import junit.framework.Assert;
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests for class {@link SplitIntoLines}.
  * @author DAM
  */
-public class SplitIntoLinesTest extends TestCase
+class SplitIntoLinesTest
 {
   private void testASample(String text, int linesCount, String... expected)
   {
     System.out.println(text+" ("+linesCount+")");
     String[] ret=SplitIntoLines.split(text,linesCount);
     System.out.println(" => "+Arrays.toString(ret));
-    Assert.assertEquals(expected.length,ret.length);
+    assertEquals(expected.length,ret.length);
     for(int i=0;i<expected.length;i++)
     {
-      Assert.assertEquals(expected[i],ret[i]);
+      assertEquals(expected[i],ret[i]);
     }
   }
 
   /**
    * Test method for {@link delta.common.ui.swing.labels.SplitIntoLines#split(java.lang.String, int)}.
    */
-  public void testSplit()
+  @Test
+  void testSplit()
   {
     testASample("Reforged Burglar's Sword of the Second Age",3,"Reforged Burglar's", "Sword of the", "Second Age");
     testASample("",1,"");
