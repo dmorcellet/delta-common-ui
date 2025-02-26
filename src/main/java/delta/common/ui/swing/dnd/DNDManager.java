@@ -10,11 +10,6 @@ import java.awt.dnd.DropTargetListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import delta.common.utils.io.PrintStreamToStringBridge;
-
 /**
  * Drop target listener.
  * @param <T> Type of dropped data.
@@ -22,8 +17,6 @@ import delta.common.utils.io.PrintStreamToStringBridge;
  */
 class DNDManager<T> implements DropTargetListener
 {
-  private static final Logger LOGGER=LoggerFactory.getLogger(DNDManager.class);
-
   private final List<DataFlavor> _flavors;
   private final DataExtractor<T> _extractor;
   private final DropListener<T> _listener;
@@ -49,12 +42,6 @@ class DNDManager<T> implements DropTargetListener
    */
   public void dragEnter(final DropTargetDragEvent e)
   {
-    if (LOGGER.isDebugEnabled())
-    {
-      final PrintStreamToStringBridge bridge=new PrintStreamToStringBridge();
-      DNDTools.dumpEvent(e,bridge.getPrintStream());
-      LOGGER.debug(bridge.toString());
-    }
     if (shouldAcceptDrag(e))
     {
       e.acceptDrag(DnDConstants.ACTION_COPY);
@@ -105,12 +92,6 @@ class DNDManager<T> implements DropTargetListener
    */
   public void drop(final DropTargetDropEvent e)
   {
-    if (LOGGER.isDebugEnabled())
-    {
-      final PrintStreamToStringBridge bridge=new PrintStreamToStringBridge();
-      DNDTools.dumpEvent(e,bridge.getPrintStream());
-      LOGGER.debug(bridge.toString());
-    }
     // Check to accept drop
     final DataFlavor flavor=chooseDropFlavor(e);
     if (flavor!=null)
