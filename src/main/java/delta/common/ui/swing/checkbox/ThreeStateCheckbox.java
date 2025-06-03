@@ -77,10 +77,7 @@ public class ThreeStateCheckbox extends JCheckBox implements Icon, ItemListener
     }
     _inListener=false;
 
-    if (LOGGER.isDebugEnabled())
-    {
-      LOGGER.debug("State: "+_state);
-    }
+    LOGGER.debug("State: {}",_state);
   }
 
   @Override
@@ -135,10 +132,7 @@ public class ThreeStateCheckbox extends JCheckBox implements Icon, ItemListener
     setSelected(state==ThreeState.SELECTED);
     _state=state;
     _inListener=false;
-    if (LOGGER.isDebugEnabled())
-    {
-      LOGGER.debug("State: "+_state);
-    }
+    LOGGER.debug("State: {}",_state);
     repaint();
   }
 }
