@@ -88,6 +88,20 @@ public class ComboBoxController<T>
   }
 
   /**
+   * Add new items from list. Labels comes from toString().
+   * @param list Items.
+   */
+  public void addItems(List<T> list)
+  {
+    for (T each : list)
+    {
+      ComboBoxItem<T> item=new ComboBoxItem<T>(each,each.toString());
+      _items.add(item);
+      _comboBox.addItem(item);
+    }
+  }
+
+  /**
    * Update the items displayed in this combo-box.
    * Keeps the selection if possible.
    * @param items Items to set.
