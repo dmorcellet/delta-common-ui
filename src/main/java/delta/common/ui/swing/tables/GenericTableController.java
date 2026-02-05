@@ -592,6 +592,7 @@ public class GenericTableController<POJO>
     final DefaultTableColumnController<POJO,String> column=new DefaultTableColumnController<POJO,String>(id,"",String.class,cell);
     column.setWidthSpecs(width,width,width);
     column.setEditable(true);
+    column.setSortable(false);
 
     ButtonRenderer renderer=new ButtonRenderer();
     column.setCellRenderer(renderer);
