@@ -67,7 +67,7 @@ public class IconsManager
       }
       else
       {
-        _logger.error("Image not found: "+path);
+        _logger.error("Image not found: {}",path);
       }
     }
     return img;
@@ -94,7 +94,7 @@ public class IconsManager
         }
         else
         {
-          _logger.error("Icon not found: "+iconPath);
+          _logger.error("Icon not found: {}",iconPath);
         }
       }
     }
